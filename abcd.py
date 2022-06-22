@@ -20,6 +20,10 @@ This web app was created by [Nur Adrera](https://www.linkedin.com/in/nuradrera/)
 """)
 
 st.write("""
+This COVID-19 symptoms data was retrieved from [Kaggle Website](https://www.kaggle.com/code/midouazerty/symptoms-covid-19-using-7-machine-learning-98/data).
+""")
+
+st.write("""
 [Dr. Yu Yong Poh](https://www.linkedin.com/in/yong-poh-yu/) and [Dr. Tan Yan Bin](https://www.linkedin.com/in/yyanbin-tan/) deserve special thanks for their guidance and assistance in making this a success.
 """)
 
