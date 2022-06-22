@@ -13,7 +13,7 @@ st.write("""
 # Simple COVID-19 Prediction App
 This app predicts whether you are infected with Covid-19 or not based on your symptoms!
 """)
-st.write('Please do not use this as your primary indicator for predicting COVID-19 and seek more information from your local health clinic.')
+st.write('DISCLAIMER: Please do not use this as your primary indicator for predicting COVID-19 and seek more information from your local health clinic.')
 
 st.write("""
 This web app was created by [Nur Adrera](https://www.linkedin.com/in/nuradrera/).
@@ -82,49 +82,8 @@ def user_input_features():
     return features
 data = pd.read_csv('https://raw.githubusercontent.com/nuradrera/covid-19/main/Covid_Dataset.csv')
 
-# labelencoder1 = LabelEncoder()
-# labelencoder2 = LabelEncoder()
-# labelencoder3 = LabelEncoder()
-# labelencoder4 = LabelEncoder()
-# labelencoder5 = LabelEncoder()
-# labelencoder6 = LabelEncoder()
-# labelencoder7 = LabelEncoder()
-# labelencoder8 = LabelEncoder()
-# labelencoder9 = LabelEncoder()
-# labelencoder10 = LabelEncoder()
-# labelencoder11 = LabelEncoder()
-# labelencoder12 = LabelEncoder()
-# labelencoder13 = LabelEncoder()
-# labelencoder14 = LabelEncoder()
-# labelencoder15 = LabelEncoder()
-# labelencoder16 = LabelEncoder()
-# labelencoder17 = LabelEncoder()
-# labelencoder18 = LabelEncoder()
-# labelencoder19 = LabelEncoder()
-# labelencoder20 = LabelEncoder()
-
-# data['BreathingProblem'] = labelencoder1.fit_transform(data['BreathingProblem'])
-# data['Fever'] = labelencoder2.fit_transform(data['Fever'])
-# data['DryCough'] = labelencoder3.fit_transform(data['DryCough'])
-# data['SoreThroat'] = labelencoder4.fit_transform(data['SoreThroat'])
-# data['RunningNose'] = labelencoder5.fit_transform(data['RunningNose'])
-# data['Asthma'] = labelencoder6.fit_transform(data['Asthma'])
-# data['ChronicLungDisease'] = labelencoder7.fit_transform(data['ChronicLungDisease'])
-# data['Headache'] = labelencoder8.fit_transform(data['Headache'])
-# data['HeartDisease'] = labelencoder9.fit_transform(data['HeartDisease'])
-# data['Diabetes'] = labelencoder10.fit_transform(data['Diabetes'])
-# data['HyperTension'] = labelencoder11.fit_transform(data['HyperTension'])
-# data['Fatigue'] = labelencoder12.fit_transform(data['Fatigue'])
-# data['Gastrointestinal'] = labelencoder13.fit_transform(data['Gastrointestinal'])
-# data['AbroadTravel'] = labelencoder14.fit_transform(data['AbroadTravel'])
-# data['ContactWithCOVIDPatient'] = labelencoder15.fit_transform(data['ContactWithCOVIDPatient'])
-# data['AttendedLargeGathering'] = labelencoder16.fit_transform(data['AttendedLargeGathering'])
-# data['VisitedPublicExposedPlaces'] = labelencoder17.fit_transform(data['VisitedPublicExposedPlaces'])
-# data['FamilyWorkingInPublicExposedPlaces'] = labelencoder18.fit_transform(data['FamilyWorkingInPublicExposedPlaces'])
-# data['WearingMasks'] = labelencoder19.fit_transform(data['WearingMasks'])
-# data['SanitizationFromMarket'] = labelencoder20.fit_transform(data['SanitizationFromMarket'])
-
 X = data.drop('COVID19', axis=1)
+X = X.apply(LabelEncoder().fit_transform)
 Y = data['COVID19']
 
 df = user_input_features()
@@ -132,7 +91,6 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df.T)
 
-X = X.apply(LabelEncoder().fit_transform)
 
 clf = RandomForestClassifier()
 clf.fit(X, Y)
